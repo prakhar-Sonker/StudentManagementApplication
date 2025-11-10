@@ -1,14 +1,18 @@
 package com.example.studentManagementApp;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
 public class StudentController {
 
-    HashMap<Integer,Student> studentDb = new HashMap<>();
+
+    @Autowired
+    StudentService studentService;
 
 
     @GetMapping("/welcome")
@@ -18,58 +22,46 @@ public class StudentController {
 
     @GetMapping("/student")
     public Student getStudentById(@RequestParam("id") int id){
-        if(!studentDb.containsKey(id)){
-            return null;
-        }
-        return studentDb.get(id);
+        return studentService.getStudentById(id);
     }
 
     @PostMapping("/student")
     public String addStudent(@RequestBody Student student){
-        if(studentDb.containsKey(student.getId())){
-            return "Student already added";
-        }
-        studentDb.put(student.getId(), student);
-        return "Student added Successfully";
+        return studentService.addStudent(student);
     }
 
     @GetMapping("/student/{id}")
-    public Student getStudent(@PathVariable int id){
-        if(!studentDb.containsKey(id)){
-            return null;
-        }
-        return studentDb.get(id);
+    public Student getStudentByPath(@PathVariable int id){
+        return studentService.getStudentById(id);
     }
 
     @PutMapping("/student/{id}")
     public String updateStudent(@PathVariable int id, @RequestBody Student student){
-        if (!studentDb.containsKey(id)) {
-            return "Student not found";
-        }
-        studentDb.put(id, student);
-        return "Student updated successfully";
+        return studentService.updateStudent(id, student);
     }
 
     @DeleteMapping("/student/{id}")
     public String deleteStudentId(@PathVariable int id){
-        if(!studentDb.containsKey(id)){
-            return "Student does not exist";
-        }
-        studentDb.remove(id);
-        return "Student deleted successfully";
+        return studentService.deleteStudentId(id);
     }
 
 //    update age
     @PutMapping("/student/id/{id}/age/{age}")
     public  String updateAge(@PathVariable("id") int id,
                              @PathVariable("age") int age){
-        if(!studentDb.containsKey(id)){
-            return "Invalid Student";
-        }
-        Student existingStudent = studentDb.get(id);
-        existingStudent.setAge(age);
-        studentDb.put(id, existingStudent);
-        return "Student age updated successfully";
+        return studentService.updateAge(id, age);
+    }
+
+    @PutMapping("/student")
+    public String updateAgeByRequestParam(@RequestParam("id") int id,
+                                          @RequestParam("age") int age){
+        return studentService.updateAge(id, age);
+    }
+
+//    get the list of all students
+    @GetMapping("/student/all")
+    public List<Student> getAllStudents(){
+        return studentService.getAllStudents();
     }
 
 
