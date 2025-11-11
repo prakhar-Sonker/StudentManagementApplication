@@ -3,6 +3,8 @@ package com.example.studentManagementApp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TeacherService {
 
@@ -24,5 +26,9 @@ public class TeacherService {
 
     public String deleteTeacher(int id) {
         return teacherRepository.deleteTeacher(id);
+    }
+
+    public List<Teacher> getList() {
+        return teacherRepository.getList();
     }
 }

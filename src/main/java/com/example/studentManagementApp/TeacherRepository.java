@@ -2,7 +2,9 @@ package com.example.studentManagementApp;
 
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 @Repository
 public class TeacherRepository {
@@ -39,5 +41,9 @@ public class TeacherRepository {
         }
         teacherDb.remove(id);
         return "Teacher deleted Successfully";
+    }
+
+    public List<Teacher> getList() {
+        return new ArrayList<>(teacherDb.values());
     }
 }

@@ -3,6 +3,8 @@ package com.example.studentManagementApp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/teacher")
 public class TeacherController {
@@ -37,5 +39,12 @@ public class TeacherController {
     @DeleteMapping("/{id}")
     public String deleteTeacher(@PathVariable int id){
         return teacherService.deleteTeacher(id);
+    }
+
+//    get all records
+    @GetMapping("/all")
+    public List<Teacher> getList(){
+        return teacherService.getList();
+
     }
 }
