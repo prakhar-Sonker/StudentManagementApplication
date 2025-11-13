@@ -1,7 +1,7 @@
-package com.example.studentManagementApp;
+package com.example.studentManagementApp.repository;
 
+import com.example.studentManagementApp.model.Student;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,7 +11,7 @@ import java.util.List;
 public class StudentRepository {
 
 
-    HashMap<Integer,Student> studentDb = new HashMap<>();
+    HashMap<Integer, Student> studentDb = new HashMap<>();
 
 
     public Student getStudentById(int id) {

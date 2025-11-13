@@ -1,8 +1,9 @@
-package com.example.studentManagementApp;
+package com.example.studentManagementApp.service;
 
+import com.example.studentManagementApp.repository.StudentRepository;
+import com.example.studentManagementApp.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 

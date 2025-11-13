@@ -1,5 +1,7 @@
-package com.example.studentManagementApp;
+package com.example.studentManagementApp.controller;
 
+import com.example.studentManagementApp.model.Teacher;
+import com.example.studentManagementApp.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,9 +1,10 @@
-package com.example.studentManagementApp;
+package com.example.studentManagementApp.controller;
 
+import com.example.studentManagementApp.model.Student;
+import com.example.studentManagementApp.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
 
 @RestController

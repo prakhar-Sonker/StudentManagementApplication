@@ -1,4 +1,4 @@
-package com.example.studentManagementApp;
+package com.example.studentManagementApp.model;
 
 public class Teacher {
     private int id;

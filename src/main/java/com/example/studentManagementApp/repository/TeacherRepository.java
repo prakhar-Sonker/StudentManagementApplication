@@ -1,5 +1,7 @@
-package com.example.studentManagementApp;
+package com.example.studentManagementApp.repository;
 
+import com.example.studentManagementApp.exceptions.TeacherExitsException;
+import com.example.studentManagementApp.model.Teacher;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -13,7 +15,7 @@ public class TeacherRepository {
 
     public String addTeacher(Teacher teacher) {
         if(teacherDb.containsKey(teacher.getId())){
-            return "Teacher already exists";
+            throw new TeacherExitsException("Id" + teacher.getId()+ " already exists");
         }
         teacherDb.put(teacher.getId(), teacher);
         return "Teacher added Successfully";
