@@ -15,7 +15,7 @@ public class TeacherRepository {
 
     public String addTeacher(Teacher teacher) {
         if(teacherDb.containsKey(teacher.getId())){
-            throw new TeacherExitsException("Id" + teacher.getId()+ " already exists");
+            throw new TeacherExitsException("Id"+ teacher.getId()+" already exists");
         }
         teacherDb.put(teacher.getId(), teacher);
         return "Teacher added Successfully";

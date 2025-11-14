@@ -1,5 +1,6 @@
 package com.example.studentManagementApp.controller;
 
+import com.example.studentManagementApp.exceptions.TeacherExitsException;
 import com.example.studentManagementApp.model.Teacher;
 import com.example.studentManagementApp.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,12 @@ public class TeacherController {
 //    add teacher
     @PostMapping("/add")
     public String addTeacher(@RequestBody Teacher teacher){
-        return teacherService.addTeacher(teacher);
+        try{
+            return teacherService.addTeacher(teacher);
+        }
+        catch (TeacherExitsException e){
+            return e.getMessage();
+        }
     }
 
 //    get teacher by id
